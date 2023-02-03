@@ -1,0 +1,205 @@
+*******visitors********
+
+<?php
+$handle = fopen("counter.txt", "r");
+if(!$handle)
+{
+echo "could not open the file";
+}
+else
+{
+$counter = (int) fread($handle,20);
+fclose($handle);
+$counter++;
+echo" <strong> you are visitor no".$counter. "</strong>"; 
+$handle = fopen("counter.txt", "w"); 
+fwrite($handle,$counter);
+fclose($handle);
+}
+?>
+
+*********cookies******
+
+<html>
+<head>
+<title>Cookie Demo</title>
+</head>
+<body>
+ <form method="post">
+  Enter Your Name : 
+<input type="text" name="fname" value="<?php echo $_COOKIE['myname']; ?>">
+  <input type="submit" value="Create Cookie" name="submit">
+ </form>
+</body>
+</html>
+<?php
+if(isset($_POST['submit']))
+{
+ $name=$_POST['fname'];
+ setcookie('myname',$name,time()+100,"/","",0);
+ 
+ echo "Your name is : ".$_COOKIE['myname'];
+ 
+ if(!isset($_COOKIE['myname']))
+ {
+  echo "failed to create cookie";
+ }
+}
+?>
+
+*******registration form********
+
+<html>
+<head>
+<title>Registration</title>
+<style>
+.main
+{
+ width:30%;
+ margin:2em auto;
+ border:2px solid black;
+ padding:1em;
+}
+.main input[type="submit"]
+{
+ width:95%;
+ border:1px solid black;
+ padding:.5em;
+ margin:.5em;
+}
+.main input[type="password"]
+{
+ width:95%;
+ border:1px solid black;
+ padding:.5em;
+ margin:.5em;
+}
+.main input[type="text"],.main input[type="email"]
+{
+ width:45%;
+ border:1px solid black;
+ padding:.5em;
+ margin:.5em;
+}
+</style>
+</head>
+<body>
+<div class="main">
+
+ <form method="post" action="welcome.php">
+
+ <h2>Student Registration</h2>
+
+  <input type="text" name="fname" placeholder="First Name">
+  <input type="text" name="lname" placeholder="Last Name">
+  <input type="email" name="email" placeholder="Email">
+  <input type="text" name="mobile" placeholder="Mobile">
+  <input type="text" name="city" placeholder="City"><br>
+<hr>
+  Gender<br>
+  <input type="radio" name="gender" value="Male">Male<br>
+  <input type="radio" name="gender" value="female">Female<br>
+<hr>
+  Hobbies<br>
+  <input type="checkbox" name="hobby[]" value="Cricket">Cricket<br>
+  <input type="checkbox" name="hobby[]" value="Football">Football<br>
+  <input type="checkbox" name="hobby[ ]" value="Chess">Chess<br>
+<hr>
+  <input type="Password" name="pass" placeholder="Password"><br>
+  <input type="submit" name="submit" value="Register">
+ </form>
+</div>
+</body>
+</html>
+
+php code:********
+
+<?php
+ if(isset($_POST['submit']))
+ {
+  $fn=$_POST['fname'];
+  $ln=$_POST['lname'];
+  $em=$_POST['email'];
+  $mob=$_POST['mobile'];
+  $city=$_POST['city'];
+  $gender=$_POST['gender'];
+  $hobies=$_POST['hobby'];
+  $pass=$_POST['pass'];
+
+  echo "First name : $fn <br><br>";
+  echo "Last name : $ln <br><br>";
+  echo "Email : $em <br><br>";
+  echo "Mobile : $mob <br><br>";
+  echo "City : $city <br><br>";
+  echo "Gender : $gender <br><br>";
+
+  echo "<h3>Hobbies</h3>";
+
+  $i=0;
+
+  while($i<sizeof($hobies))
+  {
+   echo $hobies[$i]."<br>";
+
+   $i++;
+  }
+ }
+?>
+
+**********multiplication********
+
+//Program to find Multiplication of two matrices
+<html>
+<head>
+<title>PHP Program for Multiplication of two matrices</title>
+</head>
+<body>
+<?php
+$a = array
+(
+array(1, 0, 8),
+array(0, 2, 1),
+array(1, 3, 2)
+);
+$b = array
+(
+array(1, 0, 1),
+array(2, 3, 1),
+array(1, 4, 0)
+);
+$rows = count($a);
+$cols = count($b[0]);
+$m = count($b);
+if(count($a[0]) != $m)
+{
+echo "Incompatible matrices";
+exit(0);
+}
+for($i = 0; $i < $rows; $i++)
+{
+for($j = 0; $j < $cols; $j++)
+{
+$mul[$i][$j] = 0; //Initially mul to be declare with 0
+for($k=0; $k < $m; $k++)
+{
+$mul[$i][$j] += $a[$i][$j] * $b[$i][$j];
+}
+}
+}
+echo("Multiplication of two matrices:</br>");
+for($i = 0; $i < $rows; $i++)
+{
+for($j = 0; $j < $cols; $j++)
+{
+echo($mul[$i][$j] . " " );
+echo "   ";
+}
+echo("</br>");
+}
+?>
+</body>
+</html>
+
+
+********studentmarklist**********
+
