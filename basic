@@ -203,3 +203,141 @@ echo("</br>");
 
 ********studentmarklist**********
 
+
+<html>
+<body>
+<?php
+$remark1=0;
+$remark2=0;
+$remark3=0;
+$remark4=0;
+$remark5=0;
+$count=0;
+$s="a";
+$min=27;
+$max=75;
+$hin=30;
+$eng=40;
+$math=50;
+$phy=47;
+$compt=27;
+$total=$hin+$eng+$math+$phy+$compt;
+if($hin<27){
+$remark1="<font color='red'>*</font>";
+$count++;
+$s=$s.' and '.$hin;
+}
+else if($hin>75)
+{
+$remark1="<font color='green'>D</font>";
+}
+else
+{
+$remark1="";
+}
+if($eng<27){
+$remark2="<font color='red'></font>";
+$count++;
+$s=$s.' and '.$eng;
+}else if($eng>75)
+{
+$remark2="<font color='green'>D</font>";
+}
+else
+{
+$remark2='-';
+}
+if($math<27)
+{
+$remark3="<font color='red'></font>";
+$count++;
+$s-$s.'and'.$math;
+}
+else if($math>75)
+{ 
+$remark3="<font color='green'>D</font>";
+}
+else
+{
+$remark3='-';
+}
+if($phy<27)
+{
+$remark4="<font color='red'>*</font>";
+$count++;
+$s=$s.' and'.$phy;
+}
+else if($phy>75)
+{
+$remark4="<font color='green'>D</font>"; 
+}else{
+$remark4='-';
+}
+if($compt<27)
+{
+$remark5="<font color='red'>*</font>";
+$count++;
+$s=$s.' and '.$chem;
+}
+else if($compt>=75)
+{ 
+$remark5="<font color='green'>D</font>";
+}
+else
+{
+$remark5='-';
+}
+$s=str_replace('a and', '', $s);
+if($count>2)
+{
+$s="Fail";
+}
+else if($count==0)
+{
+$s="Pass";
+}
+else if($count<=2)
+{
+$s="Compartment in ".''.$s;
+}
+?>
+<center>
+<table border=1>
+<tr>
+<td>
+<table width=100% >
+<tr>
+<td>
+<b><font size='5'>student marks sheet</font>&nbsp;&nbsp;&nbsp;</b><br><br>
+<font size='4' color='grey'><b><?php echo "$s"; ?></b></font>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table border=1 width=100%>
+<tr><th><i>Subject code</i></th><th><i>Subject name</i></th><th><i>Min marks</i></th><th><i>Max marks</i></th><th><i>Marks obtained</i></th><th><i>Remark</i></th></tr>
+<tr><td>101</td><td>Hindi</td><td>35</td><td>100</td><td><?php echo "$hin"; ?></td><td><?php echo "$remark1"; ?></td></tr>
+<tr><td>102</td><td>English</td><td>35</td><td>100</td><td><?php echo "$eng"; ?></td><td><?php echo "$remark2"; ?></td></tr>
+<tr><td>103</td><td>Maths</td><td>35</td><td>100</td><td><?php echo "$math"; ?></td><td><?php echo "$remark3"; ?></td></tr>
+<tr><td>104</td><td>Physics</td><td>35</td><td>100</td><td><?php echo "$phy"; ?></td><td><?php echo "$remark4"; ?></td></tr>
+<tr><td>105</td><td>Computerscience</td><td>35</td><td>100</td><td><?php echo "$compt"; ?></td><td><?php echo "$remark5"; ?></td></tr>
+<tr><td></td><td></td><td><b>Total</b></td><td><b>400</b></td><td><b>
+<?php echo "$total"; ?><b></td><td></td></tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table>7
+<tr><td><b><font size="4">Result:<?php echo "$s"; ?></font></b></td></tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+To test this run your Student Details file and hit submit button, you should see your result like this:
+</body>
+</html>
